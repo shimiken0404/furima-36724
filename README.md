@@ -1,24 +1,58 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## User名
 
-Things you may want to cover:
+| Column             | Type   | Options     |
+| ------------------ | ------ | ----------- |
+| email              | string | null: false |
+| password           | string | null: false |
+| name               | string | null: false |
 
-* Ruby version
+### Association
 
-* System dependencies
+- has_many :iteme
+- has_one  :get_user
 
-* Configuration
 
-* Database creation
+## iteme テーブル
 
-* Database initialization
+| Column      | Type         | Options     |
+| ----------- | ------------ | ----------- |
+| title       | string       | null: false |
+| comment     | text         | null: false |
+| contents    | text         | null: false |
+| image       | ActiveStorage| null: false |
 
-* How to run the test suite
+### Association
 
-* Services (job queues, cache servers, search engines, etc.)
+- belongs_to :user
+- has_one    :buy_iteme
 
-* Deployment instructions
 
-* ...
+## buy_iteme テーブル
+
+| Column      | Type         | Options     |
+| ----------- | ------------ | ----------- |
+| name        | string       | null: false |
+| get_name    | string       | null: false |
+| iteme       | text         | null: false |
+
+### Association
+
+- belongs_to :iteme
+- has_one    :get_user
+
+
+## get_user テーブル
+
+| Column      | Type         | Options     |
+| ----------- | ------------ | ----------- |
+| get_name    | string       | null: false |
+| email       | string       | null: false |
+| password    | string       | null: false |
+| address     | text         | null: false |
+
+### Association
+
+- belongs_to :buy_iteme
+- belongs_to :user
