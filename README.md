@@ -29,9 +29,10 @@
 | item_category_id    | integer      | null: false |
 | item_show_id        | integer      | null: false |
 | delivery_pay_id     | integer      | null: false |
-| delivery_address_id |integer       | null: false |
+| delivery_address_id | integer      | null: false |
 | delivery_day_id     | integer      | null: false |
 | pay                 | integer      | null: false |
+| user                | references   | null: false, foreign_key: true |
 
 ### Association
 
@@ -62,10 +63,9 @@
 | delivery_address_id | integer      | null: false |
 | address_city        | string       | null: false |
 | address_number      | string       | null: false |
-| address_building    | string       | null: false |
+| address_building    | string       |
 | telephone_number    | string       | null: false |
-| user                | references   | null: false, foreign_key: true |
-| item                | references   | null: false, foreign_key: true |
+| buy_item            | references   | null: false, foreign_key: true |
 
 ### Association
 
