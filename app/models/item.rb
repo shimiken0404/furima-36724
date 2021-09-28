@@ -8,10 +8,12 @@ class Item < ApplicationRecord
   validates :delivery_address_id,    presence: true
   validates :delivery_day_id,        presence: true
   validates :pay,                    presence: true
+  
+  validates :image,                  presence: true
 
   # has_one    :buy_item
   belongs_to :user
   has_one_attached :image
-  
+
 end
 
