@@ -11,5 +11,7 @@ class Item < ApplicationRecord
 
   # has_one    :buy_item
   belongs_to :user
+  has_one_attached :image
+  
 end
 
