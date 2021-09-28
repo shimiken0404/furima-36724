@@ -12,3 +12,4 @@ class Item < ApplicationRecord
   # has_one    :buy_item
   belongs_to :user
 end
+
