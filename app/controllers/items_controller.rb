@@ -3,7 +3,17 @@ class ItemsController < ApplicationController
 
 
   def index
-
+    @item = Items.all
   end
 
+  def new
+   @item = Items.new
+  end
+
+
+  private
+
+  def item_params
+    params.require(:).permit(:title, :catch_copy, :concept, :image).merge(user_id: current_user.id)
+  end
 end
