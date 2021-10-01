@@ -52,7 +52,7 @@ RSpec.describe Item, type: :model do
           @item.valid?
           expect(@item.errors.full_messages).to include("Delivery pay can't be blank")   
         end
-        it 'delivery_pay_idがでは登録できない' do
+        it 'delivery_pay_idが1では登録できない' do
           @item.delivery_pay_id = '1'
           @item.valid?
           expect(@item.errors.full_messages).to include("Delivery pay can't be blank")   
