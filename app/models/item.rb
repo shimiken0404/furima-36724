@@ -15,7 +15,7 @@ extend ActiveHash::Associations::ActiveRecordExtensions
   
   validates :title,                  presence: true
   validates :comment,                presence: true
-  validates :pay,                    presence: true
+  validates :pay,                    presence: true, inclusion:{in: 300..9999999}, format: { with: /\A[0-9]+\z/ , message: '半角数字のみ使用してください' }
   validates :image,                  presence: true
 
 

@@ -8,7 +8,7 @@ FactoryBot.define do
     delivery_pay_id {3}
     delivery_address_id {3}
     delivery_day_id {3}
-    pay {'50000円'}
+    pay {5000}
 
     association :user
 

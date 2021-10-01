@@ -6,7 +6,7 @@ RSpec.describe Item, type: :model do
   
     describe "全ての項目が入力されていれば登録できる" do
       context '新規登録できるとき' do
-        it 'taitle,comment,item_category_id,item_show_id,delivery_pay_id,delivery_address_id,delivery_day_id,payが入力できているとき' do
+        it 'taitle,comment,item_category_id,item_show_id,delivery_pay_id,delivery_address_id,delivery_day_id,pay,userが紐付いて入力できているとき' do
           expect(@item).to be_valid
         end
       end
@@ -55,11 +55,56 @@ RSpec.describe Item, type: :model do
           expect(@item.errors.full_messages).to include("Delivery day can't be blank")   
         end
 
+        it '画像が空では登録できない' do
+          @item.image = nil
+          @item.valid?
+          expect(@item.errors.full_messages).to include("Image can't be blank")   
+        end
+
+        it 'user紐付かないと登録できない' do
+          @item.user = nil
+          @item.valid?
+          expect(@item.errors.full_messages).to include("User must exist")   
+        end
+
         it 'payが空では登録できない' do
           @item.pay = ''
           @item.valid?
           expect(@item.errors.full_messages).to include("Pay can't be blank")   
         end
+
+        it 'payが全角では保存できない' do
+          @item.pay = 'あいう'
+          @item.valid?
+          expect(@item.errors.full_messages).to include("Pay is not included in the list")   
+        end
+
+        it 'payが英字では保存できない' do
+          @item.pay = 'abc'
+          @item.valid?
+          expect(@item.errors.full_messages).to include("Pay is not included in the list")   
+        end
+
+        it 'payが英数字混合では保存できない' do
+          @item.pay = 'abc,123'
+          @item.valid?
+          expect(@item.errors.full_messages).to include("Pay is not included in the list")   
+        end
+
+        it 'payが300未満の値では保存できない' do
+          @item.pay = 299
+          @item.valid?
+          expect(@item.errors.full_messages).to include("Pay is not included in the list")   
+        end
+
+        it '10000000以上の値では保存できない' do
+          @item.pay = 10000001
+          @item.valid?
+          
+          expect(@item.errors.full_messages).to include("Pay is not included in the list")   
+        end
+
+
       end
     end
   end
