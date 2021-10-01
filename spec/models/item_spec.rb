@@ -30,9 +30,19 @@ RSpec.describe Item, type: :model do
           @item.valid?
           expect(@item.errors.full_messages).to include("Item category can't be blank")   
         end
+        it 'item_category_idが1では登録できない' do
+          @item.item_category_id = '1'
+          @item.valid?
+          expect(@item.errors.full_messages).to include("Item category can't be blank")   
+        end
 
         it 'item_show_idが空では登録できない' do
           @item.item_show_id = ''
+          @item.valid?
+          expect(@item.errors.full_messages).to include("Item show can't be blank")   
+        end
+        it 'item_show_idが1では登録できない' do
+          @item.item_show_id = '1'
           @item.valid?
           expect(@item.errors.full_messages).to include("Item show can't be blank")   
         end
@@ -42,15 +52,30 @@ RSpec.describe Item, type: :model do
           @item.valid?
           expect(@item.errors.full_messages).to include("Delivery pay can't be blank")   
         end
+        it 'delivery_pay_idがでは登録できない' do
+          @item.delivery_pay_id = '1'
+          @item.valid?
+          expect(@item.errors.full_messages).to include("Delivery pay can't be blank")   
+        end
 
         it 'delivery_address_idが空では登録できない' do
           @item.delivery_address_id = ''
           @item.valid?
           expect(@item.errors.full_messages).to include("Delivery address can't be blank")   
         end
+        it 'delivery_address_idが0では登録できない' do
+          @item.delivery_address_id = '0'
+          @item.valid?
+          expect(@item.errors.full_messages).to include("Delivery address can't be blank")   
+        end
 
         it 'delivery_day_idが空では登録できない' do
           @item.delivery_day_id = ''
+          @item.valid?
+          expect(@item.errors.full_messages).to include("Delivery day can't be blank")   
+        end
+        it 'delivery_day_idが1では登録できない' do
+          @item.delivery_day_id = '1'
           @item.valid?
           expect(@item.errors.full_messages).to include("Delivery day can't be blank")   
         end
