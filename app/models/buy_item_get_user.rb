@@ -12,9 +12,7 @@ class BuyItemGetUser
   end
 
   def save #buy_item?
-
     buy_item = BuyItem.create(item: item, user_id: user_id)
-
     GetUser.create(postal_code: postal_code, delivery_address_id: delivery_address_id, address_city: address_city, address_number: address_number, telephone_number: telephone_number, buy_item_id: buy_item.id)
   end
 end
