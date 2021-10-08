@@ -25,8 +25,9 @@ extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :delivery_day
   belongs_to :delivery_address
 
-  # has_one    :buy_item
+  has_one    :buy_item
   belongs_to :user
+  
   has_one_attached :image
 
 end
