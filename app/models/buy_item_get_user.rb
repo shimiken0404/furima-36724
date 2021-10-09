@@ -1,6 +1,6 @@
 class BuyItemGetUser
   include ActiveModel::Model
-  attr_accessor :user, :item, :postal_code, :delivery_address_id, :address_city, :address_number, :address_building, :telephone_number
+  attr_accessor :user, :item, :postal_code, :delivery_address_id, :address_city, :address_number, :address_building, :telephone_number, :token
 
   # get_user
   with_options presence: true do
