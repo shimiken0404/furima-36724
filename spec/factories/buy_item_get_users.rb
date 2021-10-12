@@ -6,8 +6,10 @@ FactoryBot.define do
     delivery_address_id {3}
     address_city {'静岡'}
     address_number {'青山１−１'}
+    address_building {'青山ビル'}
     telephone_number {'09012341234'}
-
+    
+    token {"tok_abcdefghijk00000000000000000"}
 
   end
 end

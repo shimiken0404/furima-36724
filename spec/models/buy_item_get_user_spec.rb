@@ -2,12 +2,14 @@ require 'rails_helper'
 
 RSpec.describe BuyItemGetUser, type: :model do
   before do
-    @buy_item_get_user = FactoryBot.build(:buy_item_get_user) 
+    user = FactoryBot.build(:user)
+    item = FactoryBot.build(:item)
+    @buy_item_get_user = FactoryBot.build(:buy_item_get_user, user: user.id, item: item.id) 
   end
 
   describe "全ての項目が入力されていれば登録できる" do
     context '購入することができるとき' do
-      it 'postal_code,delivery_address_id,address_city,address_number,telephone_number,address_buildingが入力できているとき' do
+      it 'postal_code,delivery_address_id,address_city,address_number,telephone_number,address_building,tokenが入力できているとき' do
         expect(@buy_item_get_user).to be_valid
       end
 
@@ -15,6 +17,7 @@ RSpec.describe BuyItemGetUser, type: :model do
       @buy_item_get_user.address_building = ''
       expect(@buy_item_get_user).to be_valid
     end
+
    end
 
     context '購入できないとき' do
@@ -75,7 +78,11 @@ RSpec.describe BuyItemGetUser, type: :model do
         expect(@buy_item_get_user.errors.full_messages).to include("Telephone number 電話番号は、10桁以上11桁以内の半角数値のみ保存可能")   
       end
 
-
+      it 'tokenが空では登録できない' do
+        @buy_item_get_user.token = ''
+        @buy_item_get_user.valid?
+        expect(@buy_item_get_user.errors.full_messages).to include("Token can't be blank")   
+      end
 
       end
    end

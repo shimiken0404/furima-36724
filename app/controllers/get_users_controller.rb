@@ -9,7 +9,7 @@ class GetUsersController < ApplicationController
 
     @item = Item.find(params[:item_id])
     @buy_item_get_user = BuyItemGetUser.new(get_user_params)
-binding.pry
+
     if @buy_item_get_user.valid?
       # pay_item
       @buy_item_get_user.save

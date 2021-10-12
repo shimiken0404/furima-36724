@@ -9,6 +9,7 @@ class BuyItemGetUser
     validates :address_city
     validates :address_number
     validates :telephone_number,    format: {with: /\A[0-9]+\z/, message: "電話番号は、10桁以上11桁以内の半角数値のみ保存可能"},length: {minimum:10, maximum:11}
+    validates :token
   end
 
   def save #buy_item?
