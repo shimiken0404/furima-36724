@@ -1,16 +1,14 @@
 class GetUsersController < ApplicationController
   before_action :authenticate_user!, only: :index
+  before_action :set_item, only: [:index, :create]
 
 
   def index
-    @item = Item.find(params[:item_id])
     @buy_item_get_user = BuyItemGetUser.new
     redirect_to root_path if current_user == @item.user || @item.buy_item != nil
   end
 
   def create
-
-    @item = Item.find(params[:item_id])
     @buy_item_get_user = BuyItemGetUser.new(get_user_params)
 
     if @buy_item_get_user.valid?
@@ -23,6 +21,10 @@ class GetUsersController < ApplicationController
   end
 
   private
+
+  def set_item
+    @item = Item.find(params[:item_id])
+  end
 
   def get_user_params
     params.require(:buy_item_get_user).permit(:postal_code, :delivery_address_id, :address_city, :address_number, :telephone_number).merge(user: current_user.id, token: params[:token], item: params[:item_id])
