@@ -3,6 +3,7 @@ class GetUsersController < ApplicationController
   def index
     @item = Item.find(params[:item_id])
     @buy_item_get_user = BuyItemGetUser.new
+    redirect_to root_path if current_user == @item.user || @item.buy_item != nil
   end
 
   def create
@@ -11,7 +12,7 @@ class GetUsersController < ApplicationController
     @buy_item_get_user = BuyItemGetUser.new(get_user_params)
 
     if @buy_item_get_user.valid?
-      # pay_item
+      pay_item
       @buy_item_get_user.save
       redirect_to root_path
     else  
