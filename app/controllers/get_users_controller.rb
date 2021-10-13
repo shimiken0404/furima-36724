@@ -27,7 +27,7 @@ class GetUsersController < ApplicationController
   end
 
   def get_user_params
-    params.require(:buy_item_get_user).permit(:postal_code, :delivery_address_id, :address_city, :address_number, :telephone_number).merge(user: current_user.id, token: params[:token], item: params[:item_id])
+    params.require(:buy_item_get_user).permit(:postal_code, :delivery_address_id, :address_city, :address_number, :telephone_number).merge(user_id: current_user.id, token: params[:token], item_id: params[:item_id])
   end
 
   def pay_item
