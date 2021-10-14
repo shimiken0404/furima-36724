@@ -16,117 +16,117 @@ RSpec.describe Item, type: :model do
         it 'titleが空では登録できない' do
           @item.title = ''
           @item.valid?
-          expect(@item.errors.full_messages).to include("Title can't be blank")   
+          expect(@item.errors.full_messages).to include("題名を入力してください")   
         end
 
         it 'commentが空では登録できない' do
           @item.comment = ''
           @item.valid?
-          expect(@item.errors.full_messages).to include("Comment can't be blank")   
+          expect(@item.errors.full_messages).to include("内容を入力してください")   
         end
 
         it 'item_category_idが空では登録できない' do
           @item.item_category_id = ''
           @item.valid?
-          expect(@item.errors.full_messages).to include("Item category can't be blank")   
+          expect(@item.errors.full_messages).to include("カテゴリーコードは空白にできません")   
         end
         it 'item_category_idが1では登録できない' do
           @item.item_category_id = '1'
           @item.valid?
-          expect(@item.errors.full_messages).to include("Item category can't be blank")   
+          expect(@item.errors.full_messages).to include("カテゴリーコードは空白にできません")   
         end
 
         it 'item_show_idが空では登録できない' do
           @item.item_show_id = ''
           @item.valid?
-          expect(@item.errors.full_messages).to include("Item show can't be blank")   
+          expect(@item.errors.full_messages).to include("詳細コードを入力してください")   
         end
         it 'item_show_idが1では登録できない' do
           @item.item_show_id = '1'
           @item.valid?
-          expect(@item.errors.full_messages).to include("Item show can't be blank")   
+          expect(@item.errors.full_messages).to include("詳細コードは空白にできません")   
         end
         
         it 'delivery_pay_idが空では登録できない' do
           @item.delivery_pay_id = ''
           @item.valid?
-          expect(@item.errors.full_messages).to include("Delivery pay can't be blank")   
+          expect(@item.errors.full_messages).to include("配送料金を入力してください")   
         end
         it 'delivery_pay_idが1では登録できない' do
           @item.delivery_pay_id = '1'
           @item.valid?
-          expect(@item.errors.full_messages).to include("Delivery pay can't be blank")   
+          expect(@item.errors.full_messages).to include("配送料金は空白にできません")   
         end
 
         it 'delivery_address_idが空では登録できない' do
           @item.delivery_address_id = ''
           @item.valid?
-          expect(@item.errors.full_messages).to include("Delivery address can't be blank")   
+          expect(@item.errors.full_messages).to include("配送場所を入力してください")   
         end
         it 'delivery_address_idが0では登録できない' do
           @item.delivery_address_id = '0'
           @item.valid?
-          expect(@item.errors.full_messages).to include("Delivery address can't be blank")   
+          expect(@item.errors.full_messages).to include("配送場所は空白にできません")   
         end
 
         it 'delivery_day_idが空では登録できない' do
           @item.delivery_day_id = ''
           @item.valid?
-          expect(@item.errors.full_messages).to include("Delivery day can't be blank")   
+          expect(@item.errors.full_messages).to include("配送日数を入力してください")   
         end
         it 'delivery_day_idが1では登録できない' do
           @item.delivery_day_id = '1'
           @item.valid?
-          expect(@item.errors.full_messages).to include("Delivery day can't be blank")   
+          expect(@item.errors.full_messages).to include("配送日数は空白にできません")   
         end
 
         it '画像が空では登録できない' do
           @item.image = nil
           @item.valid?
-          expect(@item.errors.full_messages).to include("Image can't be blank")   
+          expect(@item.errors.full_messages).to include("画像を入力してください")   
         end
 
         it 'user紐付かないと登録できない' do
           @item.user = nil
           @item.valid?
-          expect(@item.errors.full_messages).to include("User must exist")   
+          expect(@item.errors.full_messages).to include("Userを入力してください")   
         end
 
         it 'payが空では登録できない' do
           @item.pay = ''
           @item.valid?
-          expect(@item.errors.full_messages).to include("Pay can't be blank")   
+          expect(@item.errors.full_messages).to include("値段を入力してください")   
         end
 
         it 'payが全角では保存できない' do
           @item.pay = 'あいう'
           @item.valid?
-          expect(@item.errors.full_messages).to include("Pay is not included in the list")   
+          expect(@item.errors.full_messages).to include("値段は一覧にありません")   
         end
 
         it 'payが英字では保存できない' do
           @item.pay = 'abc'
           @item.valid?
-          expect(@item.errors.full_messages).to include("Pay is not included in the list")   
+          expect(@item.errors.full_messages).to include("値段は一覧にありません")   
         end
 
         it 'payが英数字混合では保存できない' do
           @item.pay = 'abc,123'
           @item.valid?
-          expect(@item.errors.full_messages).to include("Pay is not included in the list")   
+          expect(@item.errors.full_messages).to include("値段は一覧にありません")   
         end
 
         it 'payが300未満の値では保存できない' do
           @item.pay = 299
           @item.valid?
-          expect(@item.errors.full_messages).to include("Pay is not included in the list")   
+          expect(@item.errors.full_messages).to include("値段は一覧にありません")   
         end
 
         it '10000000以上の値では保存できない' do
           @item.pay = 10000001
           @item.valid?
           
-          expect(@item.errors.full_messages).to include("Pay is not included in the list")   
+          expect(@item.errors.full_messages).to include("値段は一覧にありません")   
         end
 
 
