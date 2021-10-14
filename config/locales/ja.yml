@@ -1,0 +1,31 @@
+ja:
+  activerecord:
+    attributes:
+      user:
+        nickname: ニックネーム
+        age: 年齢
+        first_name: 苗字
+        last_name: 名前
+        first_name_kana: ミョウジ
+        last_name_kana: ナマエ
+      item:
+        title: 題名
+        comment: 内容
+        pay: 値段
+        image: 画像
+        item_category_id: カテゴリーコード
+        item_show_id: 詳細コード
+        delivery_pay_id: 配送料金
+        delivery_address_id: 配送場所
+        delivery_day_id: 配送日数
+  activemodel:
+    attributes:
+      buy_item_get_user:
+        postal_code: 郵便番号
+        delivery_address_id: 都道府県
+        address_city: 市区町村
+        address_number: 番地
+        telephone_number: 電話番号
+        token: クレジットカード情報
+        user_id: 送り先名
+        item_id: 商品名

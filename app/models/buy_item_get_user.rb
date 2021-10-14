@@ -3,8 +3,8 @@ class BuyItemGetUser
   attr_accessor :user_id, :item_id, :postal_code, :delivery_address_id, :address_city, :address_number, :address_building, :telephone_number, :token
 
   with_options presence: true do
-    validates :postal_code,         format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "is invalid. Include hyphen(-)"}
-    validates :delivery_address_id, numericality: { other_than: 0 , message: "can't be blank"}
+    validates :postal_code,         format: {with: /\A[0-9]{3}-[0-9]{4}\z/, message: "にはーをつけてください"}
+    validates :delivery_address_id, numericality: { other_than: 0 , message: "を選んでください"}
     validates :address_city
     validates :address_number
     validates :telephone_number,    format: {with: /\A[0-9]+\z/, message: "電話番号は、10桁以上11桁以内の半角数値のみ保存可能"},length: {minimum:10, maximum:11}

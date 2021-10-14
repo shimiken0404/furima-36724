@@ -1,23 +1,18 @@
 class Item < ApplicationRecord
 extend ActiveHash::Associations::ActiveRecordExtensions
   
-     validates :item_category_id,       presence: true
-     validates :item_show_id,           presence: true
-     validates :delivery_pay_id,        presence: true
-     validates :delivery_address_id,    presence: true
-     validates :delivery_day_id,        presence: true
-  
-    validates :item_category_id,    numericality: { other_than: 1 , message: "can't be blank"}
-    validates :item_show_id,        numericality: { other_than: 1 , message: "can't be blank"}
-    validates :delivery_pay_id,     numericality: { other_than: 1 , message: "can't be blank"}
-    validates :delivery_address_id, numericality: { other_than: 0 , message: "can't be blank"}
-    validates :delivery_day_id,     numericality: { other_than: 1 , message: "can't be blank"}
-  
-  validates :title,                  presence: true
-  validates :comment,                presence: true
-  validates :pay,                    presence: true, inclusion:{in: 300..9999999}, format: { with: /\A[0-9]+\z/ , message: '半角数字のみ使用してください' }
-  validates :image,                  presence: true
 
+with_options presence: true do
+  validates :item_category_id,        numericality: { other_than: 1 , message: "は空白にできません"}
+  validates :item_show_id,            numericality: { other_than: 1 , message: "は空白にできません"}
+  validates :delivery_pay_id,         numericality: { other_than: 1 , message: "は空白にできません"}
+  validates :delivery_address_id,     numericality: { other_than: 0 , message: "は空白にできません"}
+  validates :delivery_day_id,         numericality: { other_than: 1 , message: "は空白にできません"}
+  validates :title                  
+  validates :comment               
+  validates :pay,                     inclusion:{in: 300..9999999}, format: { with: /\A[0-9]+\z/ , message: '半角数字のみ使用してください' }
+  validates :image
+end                  
 
   belongs_to :item_category
   belongs_to :item_show
